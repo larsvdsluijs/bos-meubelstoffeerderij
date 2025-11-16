@@ -1,0 +1,159 @@
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between">
+      <a routerLink="/" class="flex items-center" (click)="closeMenu()">
+        <img
+          src="/img/bos_logo.jpg"
+          alt="BOS Meubelstoffeerderij Logo"
+          class="h-20 sm:h-24 py-2"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        <a routerLink="/" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Welkom</a>
+        <a routerLink="/diensten" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Diensten</a>
+        <a routerLink="/portfolio" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Portfolio</a>
+        <a routerLink="/stoffen" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Stoffen</a>
+        <a routerLink="/doe-het-zelf" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Doe-het-zelf</a>
+        <a routerLink="/onderhoud" class="text-[var(--dark-text-color)] hover:text-[var(--primary-color)] font-medium transition-colors duration-300">Onderhoud</a>
+        <a routerLink="/contact" class="bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-[var(--button-rounded-radius)] hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+          Vraag Offerte Aan
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="lg:hidden p-2 text-[var(--dark-text-color)] hover:text-[var(--primary-color)] transition-colors duration-300 relative z-50"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+        aria-label="Toggle menu"
+      >
+        <div class="w-6 h-6 relative">
+          <span
+            class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+            [ngClass]="{
+              'rotate-45': isMenuOpen,
+              'top-2.5': isMenuOpen,
+              'opacity-0': isMenuOpen
+            }"
+          ></span>
+          <span
+            class="absolute top-2.5 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+            [ngClass]="{
+              'opacity-0': isMenuOpen
+            }"
+          ></span>
+          <span
+            class="absolute top-5 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+            [ngClass]="{
+              '-rotate-45': isMenuOpen,
+              'top-2.5': isMenuOpen,
+              'opacity-0': isMenuOpen
+            }"
+          ></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Full Screen Mobile Menu -->
+  <div
+    class="mobile-menu-overlay fixed inset-0 bg-[var(--dark-background-color)] z-40 lg:hidden transition-opacity duration-500 ease-in-out"
+    [class.opacity-100]="isMenuOpen"
+    [class.opacity-0]="!isMenuOpen"
+    [class.pointer-events-none]="!isMenuOpen"
+    [class.pointer-events-auto]="isMenuOpen"
+  >
+    <div class="container mx-auto px-4 py-8 h-full flex flex-col">
+      <!-- Close Button -->
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="text-white hover:text-[var(--secondary-button-bg-color)] transition-colors duration-300 p-2"
+          (click)="closeMenu()"
+          aria-label="Close menu"
+        >
+          <i class="fas fa-times text-3xl"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 flex flex-col justify-center space-y-6">
+        <a
+          routerLink="/"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-home mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Welkom
+        </a>
+        <a
+          routerLink="/diensten"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-couch mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Diensten
+        </a>
+        <a
+          routerLink="/portfolio"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-images mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Portfolio
+        </a>
+        <a
+          routerLink="/stoffen"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-th-large mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Stoffen
+        </a>
+        <a
+          routerLink="/doe-het-zelf"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-hammer mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Doe-het-zelf
+        </a>
+        <a
+          routerLink="/onderhoud"
+          (click)="closeMenu()"
+          class="text-white text-2xl font-semibold hover:text-[var(--secondary-button-bg-color)] transition-all duration-300 transform hover:translate-x-4 flex items-center"
+        >
+          <i class="fas fa-tools mr-4 text-[var(--secondary-button-bg-color)]"></i>
+          Onderhoud
+        </a>
+        <a
+          routerLink="/contact"
+          (click)="closeMenu()"
+          class="mt-8 inline-flex items-center justify-center bg-[var(--primary-color)] text-white px-8 py-4 rounded-[var(--button-rounded-radius)] hover:bg-[var(--primary-button-hover-bg-color)] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transform"
+        >
+          <i class="fas fa-envelope mr-3"></i>
+          Vraag Offerte Aan
+        </a>
+      </nav>
+
+      <!-- Contact Info -->
+      <div class="mt-auto pt-8 border-t border-white border-opacity-20">
+        <div class="text-white text-center space-y-2">
+          <p class="text-sm opacity-80">
+            <i class="fas fa-phone mr-2"></i>
+            (020) 640 71 75
+          </p>
+          <p class="text-sm opacity-80">
+            <i class="fas fa-envelope mr-2"></i>
+            infomeubelstoffeerderijbos.nl
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+

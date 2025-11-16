@@ -1,27 +1,62 @@
-# BosMeubels
+# BOS Meubelstoffeerderij Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+Website voor BOS Meubelstoffeerderij - Een Angular applicatie met Tailwind CSS.
 
-## Development server
+## Development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+# Install dependencies
+npm install
 
-## Code scaffolding
+# Start development server
+npm start
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Build for production
+npm run build
+```
 
-## Build
+## Deployment naar GitHub Pages
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+De applicatie is geconfigureerd voor automatische deployment naar GitHub Pages via GitHub Actions.
 
-## Running unit tests
+### Stappen voor eerste deployment:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Push je code naar GitHub:**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
 
-## Running end-to-end tests
+2. **Activeer GitHub Pages in je repository:**
+   - Ga naar je GitHub repository
+   - Klik op **Settings** → **Pages**
+   - Onder **Source**, selecteer **GitHub Actions**
+   - Sla op
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **De workflow wordt automatisch uitgevoerd:**
+   - Bij elke push naar `main` of `master` branch wordt automatisch gebouwd en gedeployed
+   - Je kunt ook handmatig deployen via **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
 
-## Further help
+4. **Je website is beschikbaar op:**
+   - `https://[jouw-username].github.io/[repository-naam]/`
+   - Of als je een custom domain hebt ingesteld, op dat domein
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Belangrijke notities:
+
+- De `404.html` file in de `public` folder zorgt ervoor dat Angular routing werkt op GitHub Pages
+- De base href is ingesteld op `/` - als je repository naam niet de root is, pas dan de `baseHref` aan in `angular.json` en `package.json`
+- De build output wordt automatisch naar de `gh-pages` branch gepusht
+
+### Handmatig deployen:
+
+```bash
+npm run build:gh-pages
+```
+
+## Technologieën
+
+- Angular 18
+- Tailwind CSS
+- Font Awesome 5.14
+- TypeScript
